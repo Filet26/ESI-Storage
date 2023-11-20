@@ -114,6 +114,7 @@ logger.info(
 
 #     return NoContent, 201
 
+# hehe
 
 def get_power_usage(start_timestamp, end_timestamp):
     session = DB_SESSION()
