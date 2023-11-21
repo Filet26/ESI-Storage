@@ -21,9 +21,14 @@ from pykafka import KafkaClient
 from pykafka.common import OffsetType
 import time
 import os
+from dotenv import load_dotenv
+
 
 
 # DB_ENGINE = create_engine("sqlite:///readings.sqlite")
+
+load_dotenv()
+
 
 if "TARGET_ENV" in os.environ and os.environ["TARGET_ENV"] == "test":
     print("In Test Environment")
