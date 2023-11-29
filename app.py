@@ -21,14 +21,11 @@ from pykafka import KafkaClient
 from pykafka.common import OffsetType
 import time
 import os
-from dotenv import load_dotenv
+
 
 
 
 # DB_ENGINE = create_engine("sqlite:///readings.sqlite")
-
-load_dotenv()
-
 
 if "TARGET_ENV" in os.environ and os.environ["TARGET_ENV"] == "test":
     print("In Test Environment")
@@ -119,7 +116,6 @@ logger.info(
 
 #     return NoContent, 201
 
-# hehe
 
 def get_power_usage(start_timestamp, end_timestamp):
     session = DB_SESSION()
@@ -279,7 +275,12 @@ def get_healthcheck():
 
 # app config
 app = connexion.FlaskApp(__name__, specification_dir="./")
-app.add_api("openapi.yaml", strict_validation=True, validate_responses=True)
+app.add_api(
+    "openapi.yaml",
+    base_path="/storage",
+    strict_validation=True,
+    validate_responses=True,
+)
 
 
 if __name__ == "__main__":
