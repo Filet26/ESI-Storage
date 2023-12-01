@@ -118,6 +118,7 @@ logger.info(
 
 
 def get_power_usage(start_timestamp, end_timestamp):
+    logger.info("test")
     session = DB_SESSION()
     timestamp_converted = datetime.datetime.strptime(
         start_timestamp, "%Y-%m-%dT%H:%M:%SZ"
